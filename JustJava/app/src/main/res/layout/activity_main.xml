@@ -16,27 +16,33 @@
         android:text="@string/quantity"
         android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="+"
-        android:onClick="increment"/>
-
-    <TextView
-        android:text="2"
-        android:id="@+id/quantity_text_view"
-        android:textSize="16dp"
-        android:textColor="@android:color/black"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="-"
+            android:onClick="decrement"/>
 
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="-"
-        android:onClick="decrement"/>
+        <TextView
+            android:text="2"
+            android:id="@+id/quantity_text_view"
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"/>
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="+"
+            android:onClick="increment"/>
+    </LinearLayout>
 
     <TextView
+        android:layout_marginTop="16dp"
         android:textAllCaps="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,9 +57,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
     <Button
         android:text="Order"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="submitOrder" />
