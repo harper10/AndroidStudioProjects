@@ -21,14 +21,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
-
-    /**
      * This method increments the quantity
      */
     public void increment(View View) {
@@ -48,8 +40,21 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage = "FREE" + " + $" +(quantity*5);
-        displayMessage(priceMessage);
+        //String priceMessage = "FREE" + " + $" +(quantity*5);
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price));
+    }
+
+    private int calculatePrice() {
+        return quantity*5;
+    }
+
+    private String createOrderSummary(int total) {
+        String output = "Name= Kaptain Kunal\n" +
+                "Quantity: " + quantity + "\n" +
+                "Total: $" + total + "\n" +
+                "Thank you !";
+        return output;
     }
 
     /**
@@ -65,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 }
