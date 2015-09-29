@@ -2,7 +2,9 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -10,7 +12,7 @@ import java.text.NumberFormat;
 /**
  * This app displays an order form to order coffee.
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     int quantity = 2;
 
@@ -42,15 +44,20 @@ public class MainActivity extends ActionBarActivity {
     public void submitOrder(View view) {
         //String priceMessage = "FREE" + " + $" +(quantity*5);
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price));
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(
+                R.id.checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        displayMessage(createOrderSummary(price, hasWhippedCream));
     }
 
     private int calculatePrice() {
         return quantity*5;
     }
 
-    private String createOrderSummary(int total) {
+    private String createOrderSummary(int total, boolean whippedCream) {
+
         String output = "Name= Kaptain Kunal\n" +
+                "Add whipped cream? "+ whippedCream + "\n" +
                 "Quantity: " + quantity + "\n" +
                 "Total: $" + total + "\n" +
                 "Thank you !";
