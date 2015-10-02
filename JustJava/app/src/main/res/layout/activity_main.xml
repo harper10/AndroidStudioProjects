@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content">
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,22 +14,39 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".MainActivity">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userNameText"
+            android:hint="Name"
+            android:inputType="textCapWords"/>
+
         <TextView
             android:textAllCaps="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/toppings"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"/>
 
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:paddingLeft="24dp"
+            android:paddingStart="24dp"
             android:textSize="16sp"
             android:text="@string/whippedCream"
-            android:id="@+id/checkbox"/>
+            android:id="@+id/whippedCreamcheckbox"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:paddingStart="24dp"
+            android:textSize="16sp"
+            android:text="@string/chocolate"
+            android:id="@+id/chocolateCheckbox"/>
+
 
 
         <TextView

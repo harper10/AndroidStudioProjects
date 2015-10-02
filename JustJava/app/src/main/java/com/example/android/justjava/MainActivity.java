@@ -3,8 +3,10 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -44,20 +46,27 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         //String priceMessage = "FREE" + " + $" +(quantity*5);
         int price = calculatePrice();
-        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(
-                R.id.checkbox);
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whippedCreamcheckbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        displayMessage(createOrderSummary(price, hasWhippedCream));
+
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolateCheckbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+
+        EditText nameEditText = (EditText) findViewById(R.id.userNameText);
+        String name = nameEditText.getText().toString();
+        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, name));
     }
 
     private int calculatePrice() {
         return quantity*5;
     }
 
-    private String createOrderSummary(int total, boolean whippedCream) {
+    private String createOrderSummary(int total, boolean whippedCream, boolean chocolate,
+                                      String name) {
 
-        String output = "Name= Kaptain Kunal\n" +
+        String output = "Name = "+ name+"\n" +
                 "Add whipped cream? "+ whippedCream + "\n" +
+                "Add chocolate? "+ chocolate + "\n" +
                 "Quantity: " + quantity + "\n" +
                 "Total: $" + total + "\n" +
                 "Thank you !";
