@@ -28,16 +28,21 @@ public class MainActivity extends AppCompatActivity {
      * This method increments the quantity
      */
     public void increment(View View) {
-        quantity = quantity + 1;
-        display(quantity);
+        if (quantity != 100){
+            quantity = quantity + 1;
+            display(quantity);
+        }
     }
 
     /**
      * This method decrements the quantity
      */
     public void decrement(View View) {
-        quantity = quantity - 1;
-        display(quantity);
+        if (quantity != 1){
+            quantity = quantity - 1;
+            display(quantity);
+        }
+
     }
 
     /**
