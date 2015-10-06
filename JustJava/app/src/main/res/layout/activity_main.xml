@@ -87,8 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/orderSummary"
-            android:layout_marginBottom="16dp"
-            android:id="@+id/order_summary_text_view" />
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:text="$10"
