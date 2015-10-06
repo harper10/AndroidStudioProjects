@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         //String priceMessage = "FREE" + " + $" +(quantity*5);
-        int price = calculatePrice();
+
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whippedCreamcheckbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
 
@@ -54,11 +54,19 @@ public class MainActivity extends AppCompatActivity {
 
         EditText nameEditText = (EditText) findViewById(R.id.userNameText);
         String name = nameEditText.getText().toString();
+        int price = calculatePrice(hasChocolate, hasWhippedCream);
         displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, name));
     }
 
-    private int calculatePrice() {
-        return quantity*5;
+    private int calculatePrice(boolean hasChocolate, boolean hasWhippedCream) {
+        int base = 5;
+        if (hasChocolate){
+            base += 2;
+        }
+        if (hasWhippedCream){
+            base += 1;
+        }
+        return quantity*base;
     }
 
     private String createOrderSummary(int total, boolean whippedCream, boolean chocolate,
