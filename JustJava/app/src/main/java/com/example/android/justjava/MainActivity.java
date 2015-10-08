@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     private void emailMessage(String subject){
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("plain/text");
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order");
+        intent.putExtra(Intent.EXTRA_TEXT, subject);
         intent.setData(Uri.parse("mailto:"));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 "Add chocolate? "+ chocolate + "\n" +
                 "Quantity: " + quantity + "\n" +
                 "Total: $" + total + "\n" +
-                "Thank you !";
+                getString(R.string.thank_you);
         return output;
     }
 
