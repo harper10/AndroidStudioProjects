@@ -1,5 +1,7 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +62,20 @@ public class MainActivity extends AppCompatActivity {
         EditText nameEditText = (EditText) findViewById(R.id.userNameText);
         String name = nameEditText.getText().toString();
         int price = calculatePrice(hasChocolate, hasWhippedCream);
-        displayMessage(createOrderSummary(price, hasWhippedCream, hasChocolate, name));
+        String message = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
+        //displayMessage(message);
+        emailMessage(message);
+    }
+
+    private void emailMessage(String subject){
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order");
+        intent.putExtra(Intent.EXTRA_TEXT, subject);
+        intent.setData(Uri.parse("mailto:"));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private int calculatePrice(boolean hasChocolate, boolean hasWhippedCream) {
@@ -82,13 +97,14 @@ public class MainActivity extends AppCompatActivity {
                 "Add chocolate? "+ chocolate + "\n" +
                 "Quantity: " + quantity + "\n" +
                 "Total: $" + total + "\n" +
-                "Thank you !";
+                getString(R.string.thank_you);
         return output;
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
+
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
@@ -98,8 +114,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
+    /*
     private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
-    }
+    }*/
 }
